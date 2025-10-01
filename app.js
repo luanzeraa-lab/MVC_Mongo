@@ -3,7 +3,6 @@ const bodyParsee = require('body-parser')
 const app = express();
 
 const userRouter = require('./src/routes/userRoute')
-app.user(userRouter);
 
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -17,6 +16,7 @@ db.on('error', console.error.bind(console,'Erro ao conectar ao MongoDb'))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
+app.use(userRouter);
 
 // mongodb://localhost:27017/
 
