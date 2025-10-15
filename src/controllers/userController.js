@@ -31,5 +31,23 @@ exports.details = async function(req, res){
     }
 }
 
+exports.delete = async function( req, res){
+    try {
+        const result = await User.findByIdAndDelete(req.params.id)
+        res.status(200).json("Excluido com sucesso")
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
+exports.update = async function(req, res){
+    try {
+        const result = await User.findByIdAndUpdate(req.params.id, 
+            {name: req.body.name, age: req.body.age})
+            res.status(200).json(result)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
 
 
